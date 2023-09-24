@@ -2,3 +2,22 @@
   margin: 0;
   padding: 0
 }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  
+  .login-container{
+    margin-top: 9rem !important;
+    max-width: 255px !important;
+  }
+
+  .signup-container{
+    margin-top: 6rem !important;
+    max-width: 255px !important;
+  }
+
+  .profile-container{
+    margin-top: 9rem !important;
+    max-width: 255px !important;
+  }
+  
+}
