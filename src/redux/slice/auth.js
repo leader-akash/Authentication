@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 
 const initialState = {
     status: 'idle',
-    user: (localStorage.getItem('userinfo') && JSON.parse(localStorage.getItem('userinfo')))|| {},
+    user: (localStorage.getItem('userinfo') && JSON.parse(localStorage.getItem('userinfo'))) || {},
     error: "",
     token: localStorage.getItem("token") || "",
 }
 
-export const login = createAsyncThunk('auth/login', async(data, {rejectWithValue}) => {
+export const login = createAsyncThunk('auth/login', async (data, { rejectWithValue }) => {
     try {
         const res = await loginApi(data);
         return res?.data;
@@ -31,7 +31,7 @@ export const signup = createAsyncThunk('auth/signup', (data) => {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers:{
+    reducers: {
         logoutHandler: () => {
             localStorage.clear();
             return {
@@ -40,36 +40,36 @@ const authSlice = createSlice({
             }
         }
     },
-    extraReducers: (builder) =>  {
+    extraReducers: (builder) => {
         //login 
 
         builder.addCase(login.pending, (state, action) => {
             state.loading = 'pending'
         })
 
-        builder.addCase(login.fulfilled, (state,action)=>{
+        builder.addCase(login.fulfilled, (state, action) => {
             state.token = action.payload?.encodedToken;
-                localStorage.setItem("token", state?.token)
-                state.user = action.payload?.foundUser;
-                localStorage.setItem("userinfo", JSON.stringify(state.user));
+            localStorage.setItem("token", state?.token)
+            state.user = action.payload?.foundUser;
+            localStorage.setItem("userinfo", JSON.stringify(state.user));
 
-                toast.success(`LoggedIn successfully`);
-                state.loading = "success";
-                state.error = "";
+            toast.success(`LoggedIn successfully`);
+            state.loading = "success";
+            state.error = "";
         })
 
         builder.addCase(login.rejected, (state, action) => {
             state.loading = "rejected";
-                state.user = {}
-                state.error = action.error.message;
-                toast.error("user not found");
+            state.user = {}
+            state.error = action.error.message;
+            toast.error("user not found");
         })
 
 
 
         //signup
 
-        builder.addCase(signup.pending, (state,action)=> {
+        builder.addCase(signup.pending, (state, action) => {
             state.loading = 'pending'
         })
 

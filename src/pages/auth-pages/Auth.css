@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.new-user:hover{
+.new-user:hover {
   color: #706f6f;
 }
 
@@ -102,11 +102,11 @@
   cursor: pointer;
 }
 
-.existing-user:hover{
+.existing-user:hover {
   color: #706f6f;
 }
 
-.errorContainer{
+.errorContainer {
   color: red;
   text-align: center;
   margin-top: 1rem;

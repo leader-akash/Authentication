@@ -19,15 +19,15 @@ const Signup = () => {
     const [confirmPasswordVal, setConfirmPasswordVal] = useState();
     const [isPasswordMatch, setIsPasswordMatch] = useState(false);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    
-      const {token} = useSelector((state)=>state.auth);
-    
-      const from = location.state?.from?.pathname || '/profile'
-    
-      useEffect(()=>{
-        token && navigate(from, {replace: true});
-    
-      },[token]);
+
+    const { token } = useSelector((state) => state.auth);
+
+    const from = location.state?.from?.pathname || '/profile'
+
+    useEffect(() => {
+        token && navigate(from, { replace: true });
+
+    }, [token]);
 
     const handleUsername = (e) => {
         setUsername(e.target.value)
@@ -43,11 +43,11 @@ const Signup = () => {
 
     const handlePasswordVisible = () => {
         setIsPasswordVisible(prev => !prev);
-     }
+    }
 
-     const handleConfirmPassword = (e) => {
+    const handleConfirmPassword = (e) => {
         setConfirmPasswordVal(e.target.value);
-     }
+    }
 
     const data = {
         username: username,
@@ -55,17 +55,17 @@ const Signup = () => {
         password: password,
     }
 
-   
+
 
     // for submitting the user info 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(password !== confirmPasswordVal){
+        if (password !== confirmPasswordVal) {
             setIsPasswordMatch(true)
         }
-       else{ 
-        dispatch(signup(data))
-       }
+        else {
+            dispatch(signup(data))
+        }
     }
 
     console.log('data', data)
@@ -85,9 +85,9 @@ const Signup = () => {
                 <div className='form-items'>
                     <label className='form-labels'> Password</label>
                     <input className='form-inputs' type={isPasswordVisible ? 'text' : 'password'} id="loginPassword" placeholder="******" value={password} onChange={handlePassword} required />
-                     <i className={` pointer-cursor far ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`} id="togglePassword" style={{ marginLeft: '-30px' }}
+                    <i className={` pointer-cursor far ${isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'}`} id="togglePassword" style={{ marginLeft: '-30px' }}
                         onClick={handlePasswordVisible}
-                     ></i>
+                    ></i>
                 </div>
                 <div className='form-items'>
                     <label className='form-labels'>Confirm Password</label>

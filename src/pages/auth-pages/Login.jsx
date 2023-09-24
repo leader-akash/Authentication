@@ -34,7 +34,7 @@ const Login = () => {
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-    
+
     const handlePasswordVisible = () => {
         setIsPasswordVisible(prev => !prev)
     }

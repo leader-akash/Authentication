@@ -11,7 +11,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [selectUserImg, setSelectUserImg] = useState();
 
-  const {user} = useSelector((state)=> state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   console.log('infoooo', user)
 
@@ -48,10 +48,10 @@ const Profile = () => {
 
       <h2>Profile</h2>
       {
-        selectUserImg ? 
-      <img className='profile-img' src={selectUserImg} alt='img' />
-        :
-      <img className='profile-img' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' alt='img' />
+        selectUserImg ?
+          <img className='profile-img' src={selectUserImg} alt='img' />
+          :
+          <img className='profile-img' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' alt='img' />
       }
       <label className='choose-img' for='edit-choose-user-img'>
         <i class="fas fa-camera edit-camera"></i>
@@ -73,7 +73,7 @@ const Profile = () => {
       </div>
 
 
-      <button onClick={()=>{handleLogout()}} className='logout-btn'>Logout</button>
+      <button onClick={() => { handleLogout() }} className='logout-btn'>Logout</button>
 
     </div>
   )
